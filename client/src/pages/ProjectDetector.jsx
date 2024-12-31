@@ -1,11 +1,9 @@
+import React from "react";
+import TokenSearch from "../components/TokenSearch";
+
 const ProjectDetector = () => {
   return (
-    <div className="page-container">
-      <h1>Détecteur de Projets</h1>
-      <div className="content">
-        {/* Add your project detector implementation here */}
-      </div>
-    </div>
+    <TokenSearch />
   );
 };
 

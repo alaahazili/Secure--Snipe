@@ -1,0 +1,260 @@
+/* Main container styles */
+.search-container {
+    background: linear-gradient(145deg, #1a1f2e, #131722);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #8a8f98;
+    margin-top: 70px;
+}
+
+.search-container h1 {
+    color: #00ff88;
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #8a8f98;
+}
+
+input[type="number"] {
+    width: 200px;
+    padding: 8px;
+    border: 1px solid #2a2f3e;
+    border-radius: 8px;
+    background: #1a1f2e;
+    color: #8a8f98;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+button {
+    background: rgba(0, 255, 136, 0.1);
+    color: #00ff88;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    margin-left: 400px;
+}
+
+button:hover {
+    background: rgba(0, 255, 136, 0.2);
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    background: #1a1f2e;
+    color: #8a8f98;
+    cursor: not-allowed;
+}
+
+#stopButton {
+    background: rgba(255, 59, 48, 0.1);
+    color: #ff3b30;
+}
+
+#stopButton:hover {
+    background: rgba(255, 59, 48, 0.2);
+}
+
+/* Token card styles */
+.token-card {
+    background: linear-gradient(145deg, #1a1f2e, #131722);
+    padding: 1.5rem;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    margin: 50px;
+}
+
+.token-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.time-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 255, 136, 0.1);
+    color: #00ff88;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+}
+
+.token-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2a2f3e;
+    padding-right: 120px;
+}
+
+.token-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #00ff88;
+    margin: 0;
+}
+
+.token-links {
+    display: flex;
+    gap: 10px;
+}
+
+.token-link {
+    padding: 5px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #00ff88;
+    font-size: 0.9em;
+    background: rgba(0, 255, 136, 0.1);
+    transition: all 0.3s ease;
+}
+
+.token-link:hover {
+    background: rgba(0, 255, 136, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Info sections */
+.token-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.info-item {
+    background: #1a1f2e;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.info-label {
+    font-size: 0.9em;
+    color: #8a8f98;
+    margin-bottom: 5px;
+}
+
+.info-value {
+    font-weight: 500;
+    color: #8a8f98;
+    word-break: break-all;
+}
+
+/* Liquidity classes */
+.liquidity-high {
+    color: #ff3b30;
+}
+
+.liquidity-medium {
+    color: #ff9500;
+}
+
+.liquidity-low {
+    color: #00ff88;
+}
+
+.liquidity-value {
+    position: relative;
+    cursor: help;
+}
+
+.liquidity-value:hover::after {
+    content: attr(data-full-value);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1f2e;
+    color: #8a8f98;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    white-space: nowrap;
+    z-index: 1;
+    margin-bottom: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Status indicators */
+.loading,
+.error {
+    text-align: center;
+    padding: 20px;
+}
+
+.loading {
+    color: #00ff88;
+}
+
+.error {
+    color: #ff3b30;
+}
+
+.progress {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #8a8f98;
+    text-align: center;
+}
+
+/* Info boxes */
+.api-info {
+    background: rgba(255, 149, 0, 0.1);
+    border: 1px solid #2a2f3e;
+    color: #ff9500;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.proxy-setup {
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid #2a2f3e;
+    color: #00ff88;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.address {
+    font-family: monospace;
+    font-size: 0.85em;
+    background: #131722;
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: #8a8f98;
+}
+
+.holders-badge {
+    display: inline-block;
+    background: rgba(0, 255, 136, 0.1);
+    color: #00ff88;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    margin-left: 8px;
+}
