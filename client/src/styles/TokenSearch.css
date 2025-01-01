@@ -1,55 +1,3 @@
-/* Main container styles */
-.search-container {
-    background: linear-gradient(165deg, #1a1f2e, #131722);
-    padding: 2rem;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    margin: 80px auto;
-    max-width: 1300px;
-    color: #a0a5b0;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.search-container h1 {
-    color: #00ff88;
-    margin-bottom: 2rem;
-    font-size: 2.2em;
-    text-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
-}
-
-/* Input and button styles */
-.input-group {
-    margin-bottom: 20px;
-    position: relative;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #b0b5be;
-    font-size: 0.95em;
-    letter-spacing: 0.5px;
-}
-
-input[type="number"] {
-    width: 220px;
-    padding: 12px;
-    border: 2px solid #2a2f3e;
-    border-radius: 12px;
-    background: rgba(26, 31, 46, 0.8);
-    color: #b0b5be;
-    font-size: 1em;
-    transition: all 0.3s ease;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-input[type="number"]:focus {
-    border-color: #00ff88;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
-}
-
 button {
     background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 255, 136, 0.1));
     color: #00ff88;
@@ -81,6 +29,7 @@ button:hover {
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
+    margin-top: 0;
 }
 
 .token-card:hover {
@@ -137,16 +86,18 @@ button:hover {
 }
 
 .token-link {
-    padding: 8px 16px;
-    border-radius: 12px;
     text-decoration: none;
-    color: #00ff88;
-    font-size: 0.9em;
-    background: rgba(0, 255, 136, 0.1);
     transition: all 0.3s ease;
-    border: 1px solid rgba(0, 255, 136, 0.1);
     font-weight: 500;
     white-space: nowrap;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 255, 136, 0.1));
+    color: #00ff88;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7em;
+    /* margin-left: 12px; */
+    border: 1px solid rgba(0, 255, 136, 0.1);
+    backdrop-filter: blur(8px);
 }
 
 .token-link:hover {
@@ -215,7 +166,7 @@ button:hover {
     color: #00ff88;
     padding: 4px 10px;
     border-radius: 20px;
-    font-size: 0.85em;
+    font-size: 0.7em;
     margin-left: 12px;
     font-weight: 500;
     border: 1px solid rgba(0, 255, 136, 0.1);
@@ -239,7 +190,8 @@ button:hover {
 .progress {
     text-align: center;
     padding: 20px;
-    margin: 20px 0;
+    margin-inline: 40px;
+    margin-block: 20px;
     border-radius: 12px;
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.05);
