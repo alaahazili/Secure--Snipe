@@ -1,260 +1,263 @@
 /* Main container styles */
 .search-container {
-    background: linear-gradient(145deg, #1a1f2e, #131722);
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    color: #8a8f98;
-    margin-top: 70px;
+    background: linear-gradient(165deg, #1a1f2e, #131722);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    margin: 80px auto;
+    max-width: 1300px;
+    color: #a0a5b0;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .search-container h1 {
     color: #00ff88;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 2.2em;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
 }
 
+/* Input and button styles */
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    position: relative;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     font-weight: 600;
-    color: #8a8f98;
+    color: #b0b5be;
+    font-size: 0.95em;
+    letter-spacing: 0.5px;
 }
 
 input[type="number"] {
-    width: 200px;
-    padding: 8px;
-    border: 1px solid #2a2f3e;
-    border-radius: 8px;
-    background: #1a1f2e;
-    color: #8a8f98;
+    width: 220px;
+    padding: 12px;
+    border: 2px solid #2a2f3e;
+    border-radius: 12px;
+    background: rgba(26, 31, 46, 0.8);
+    color: #b0b5be;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.button-group {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+input[type="number"]:focus {
+    border-color: #00ff88;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
 }
 
 button {
-    background: rgba(0, 255, 136, 0.1);
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 255, 136, 0.1));
     color: #00ff88;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
+    padding: 12px 28px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 12px;
     cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    margin-left: 400px;
+    font-size: 1em;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-left: 420px;
+    backdrop-filter: blur(8px);
 }
 
 button:hover {
-    background: rgba(0, 255, 136, 0.2);
+    background: rgba(0, 255, 136, 0.25);
     transform: translateY(-2px);
-}
-
-button:disabled {
-    background: #1a1f2e;
-    color: #8a8f98;
-    cursor: not-allowed;
-}
-
-#stopButton {
-    background: rgba(255, 59, 48, 0.1);
-    color: #ff3b30;
-}
-
-#stopButton:hover {
-    background: rgba(255, 59, 48, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
 }
 
 /* Token card styles */
 .token-card {
-    background: linear-gradient(145deg, #1a1f2e, #131722);
-    padding: 1.5rem;
-    margin-bottom: 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(165deg, #1e2334, #161a27);
+    padding: 2rem;
+    margin: 60px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    margin: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
 }
 
 .token-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 255, 136, 0.1);
 }
 
 .time-badge {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(0, 255, 136, 0.1);
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 255, 136, 0.1));
     color: #00ff88;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 0.8em;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 255, 136, 0.1);
+    z-index: 2;
 }
 
 .token-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    /* Changed to flex-start */
     align-items: center;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #2a2f3e;
-    padding-right: 120px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    /* Added for absolute positioning of time-badge */
 }
 
 .token-name {
-    font-size: 1.2em;
-    font-weight: bold;
+    font-size: 1.4em;
+    font-weight: 700;
     color: #00ff88;
     margin: 0;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .token-links {
     display: flex;
     gap: 10px;
+    margin-left: 16px;
+    /* Space between holders badge and link */
 }
 
 .token-link {
-    padding: 5px 10px;
-    border-radius: 8px;
+    padding: 8px 16px;
+    border-radius: 12px;
     text-decoration: none;
     color: #00ff88;
     font-size: 0.9em;
     background: rgba(0, 255, 136, 0.1);
     transition: all 0.3s ease;
+    border: 1px solid rgba(0, 255, 136, 0.1);
+    font-weight: 500;
+    white-space: nowrap;
 }
 
 .token-link:hover {
     background: rgba(0, 255, 136, 0.2);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 255, 136, 0.15);
 }
 
-/* Info sections */
+/* Info sections with glass morphism */
 .token-info {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
 }
 
 .info-item {
-    background: #1a1f2e;
-    padding: 10px;
-    border-radius: 8px;
+    background: rgba(26, 31, 46, 0.6);
+    padding: 15px;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    background: rgba(26, 31, 46, 0.8);
+    transform: translateY(-2px);
 }
 
 .info-label {
     font-size: 0.9em;
     color: #8a8f98;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 .info-value {
-    font-weight: 500;
-    color: #8a8f98;
+    font-weight: 600;
+    color: #b0b5be;
     word-break: break-all;
+    line-height: 1.4;
 }
 
-/* Liquidity classes */
+/* Enhanced liquidity indicators */
 .liquidity-high {
     color: #ff3b30;
+    text-shadow: 0 0 10px rgba(255, 59, 48, 0.3);
 }
 
 .liquidity-medium {
     color: #ff9500;
+    text-shadow: 0 0 10px rgba(255, 149, 0, 0.3);
 }
 
 .liquidity-low {
     color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
 }
 
-.liquidity-value {
-    position: relative;
-    cursor: help;
+.holders-badge {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 255, 136, 0.1));
+    color: #00ff88;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    margin-left: 12px;
+    font-weight: 500;
+    border: 1px solid rgba(0, 255, 136, 0.1);
+    backdrop-filter: blur(8px);
 }
 
-.liquidity-value:hover::after {
-    content: attr(data-full-value);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #1a1f2e;
-    color: #8a8f98;
-    padding: 4px 8px;
-    border-radius: 8px;
+.address {
+    font-family: 'Monaco', 'Consolas', monospace;
     font-size: 0.9em;
-    white-space: nowrap;
-    z-index: 1;
-    margin-bottom: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    background: rgba(19, 23, 34, 0.6);
+    padding: 4px 8px;
+    border-radius: 6px;
+    color: #b0b5be;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Status indicators */
 .loading,
-.error {
+.error,
+.progress {
     text-align: center;
     padding: 20px;
+    margin: 20px 0;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .loading {
     color: #00ff88;
+    background: rgba(0, 255, 136, 0.1);
 }
 
 .error {
     color: #ff3b30;
+    background: rgba(255, 59, 48, 0.1);
 }
 
 .progress {
-    margin-top: 10px;
-    font-size: 0.9em;
-    color: #8a8f98;
-    text-align: center;
-}
-
-/* Info boxes */
-.api-info {
-    background: rgba(255, 149, 0, 0.1);
-    border: 1px solid #2a2f3e;
-    color: #ff9500;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-.proxy-setup {
-    background: rgba(0, 255, 136, 0.1);
-    border: 1px solid #2a2f3e;
-    color: #00ff88;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.address {
-    font-family: monospace;
-    font-size: 0.85em;
-    background: #131722;
-    padding: 2px 4px;
-    border-radius: 4px;
-    color: #8a8f98;
-}
-
-.holders-badge {
-    display: inline-block;
-    background: rgba(0, 255, 136, 0.1);
-    color: #00ff88;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.85em;
-    margin-left: 8px;
+    color: #b0b5be;
+    background: rgba(176, 181, 190, 0.1);
+    font-size: 0.95em;
+    letter-spacing: 0.5px;
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import moment from 'moment'; // Ensure moment.js is imported
 import '../styles/TokenSearch.css';
-import { formatNumber, formatTimeAgo, formatLiquidityFriendly,  } from '../utils/TokenUtils';
+import { formatNumber, formatTimeAgo, formatLiquidityFriendly, } from '../utils/TokenUtils';
 
 const API_KEY = 'E1ml8j809n74ylLvuV11FmOIrywJcei35pZZZE31';
 const BASE_URL = 'https://public-api.dextools.io/trial';
@@ -147,8 +147,6 @@ const TokenSearch = () => {
             let processedPools = 0;
             let matchingPools = 0;
 
-            const tokenResults = [];
-
             for (let i = 0; i < data.data.results.length; i++) {
                 const pool = data.data.results[i];
                 const estimatedTimeRemaining = (totalPools - i) * (API_RATE_LIMIT / 1000);
@@ -169,16 +167,16 @@ const TokenSearch = () => {
                                 <div className="token-card" key={pool.address}>
                                     <div className="time-badge">{formatTimeAgo(pool.creationTime)}</div>
                                     <div className="token-header">
-                                        <h3 className="token-name">
+                                        <div className="token-name">
                                             {pool.mainToken?.name || 'Inconnu'} ({pool.mainToken?.symbol || 'Inconnu'})
-                                            {holders !== null && (
-                                                <span className="holders-badge">{holders.toLocaleString()} holders</span>
-                                            )}
-                                        </h3>
-                                        <div className="token-links">
-                                            <a href={`https://www.dextools.io/app/en/ether/pair-explorer/${pool.address}`} target="_blank" className="token-link">
-                                                Voir sur DexTools
-                                            </a>
+                                            <span className="holders-badge">{holders.toLocaleString()} holders</span>
+                                            <div className="token-links">
+                                                <a href={`https://www.dextools.io/app/en/ether/pair-explorer/${pool.address}`}
+                                                    target="_blank"
+                                                    className="token-link">
+                                                    Voir sur DexTools
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="token-info">
@@ -213,7 +211,9 @@ const TokenSearch = () => {
                                     </div>
                                 </div>
                             );
-                            tokenResults.push(tokenCard);
+
+                            // Update state incrementally as each pool is processed
+                            setResults(prevResults => [...prevResults, tokenCard]);
                         }
 
                         await sleep(API_RATE_LIMIT);
@@ -229,7 +229,6 @@ const TokenSearch = () => {
             setStopButtonVisible(false);
             setSearchButtonDisabled(false);
             setProgress(`Recherche terminée. ${processedPools} pools traités, ${matchingPools} pools correspondants trouvés.`);
-            setResults(tokenResults);
 
             if (matchingPools === 0) {
                 setResults(['<p>Aucun token trouvé correspondant à vos critères.</p>']);
@@ -245,6 +244,7 @@ const TokenSearch = () => {
             searchInProgress = false;
         }
     }
+
 
     useEffect(() => {
         searchTokens();
