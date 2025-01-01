@@ -2,9 +2,8 @@ import { useEffect, useState, useCallback } from 'react';
 import moment from 'moment';
 import '../styles/TokenSearch.css';
 import { formatNumber, formatTimeAgo, formatLiquidityFriendly } from '../utils/TokenUtils';
-
-const BASE_URL = 'https://public-api.dextools.io/trial';
-const API_RATE_LIMIT = 1000;
+import { BASE_URL, API_RATE_LIMIT, BACKEND_URL } from '../constants';
+import { Link } from 'react-router-dom';
 
 let searchInProgress = false;
 
@@ -26,7 +25,7 @@ const TokenSearch = () => {
 
     async function makeApiCall(url) {
         try {
-            const response = await fetch(`http://192.168.100.214:3000/api/call?url=${encodeURIComponent(url)}`, {
+            const response = await fetch(`${BACKEND_URL}/api/call?url=${encodeURIComponent(url)}`, {
                 method: 'GET',
             });
 
@@ -78,57 +77,64 @@ const TokenSearch = () => {
 
             if (Number(liquidity) <= 50) {
                 const tokenCard = (
-                    <div className="token-card" key={pool.address}>
-                        <div className="time-badge">{formatTimeAgo(pool.creationTime)}</div>
-                        <div className="token-header">
-                            <div className="token-name">
-                                {pool.mainToken?.name || 'Inconnu'} ({pool.mainToken?.symbol || 'Inconnu'})
-                                <span className="holders-badge">{(holders || 0).toLocaleString()} détenteurs</span>
-                                <div className="token-links">
-                                    <a href={`https://www.dextools.io/app/en/ether/pair-explorer/${pool.address}`}
-                                        target="_blank"
-                                        className="token-link">
-                                        Voir sur DexTools
-                                    </a>
+                    <Link to={`/project-detector/${pool.address}`} key={pool.address} className='more-details'>
+                        <div className="token-card" key={pool.address}>
+                            <div className="time-badge">{formatTimeAgo(pool.creationTime)}</div>
+                            <div className="token-header">
+                                <div className="token-name">
+                                    {pool.mainToken?.name || 'Inconnu'} ({pool.mainToken?.symbol || 'Inconnu'})
+                                    <span className="holders-badge">{(holders || 0).toLocaleString()} détenteurs</span>
+                                    <div className="token-links">
+                                        <span
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                e.preventDefault();
+                                                window.open(`https://www.dextools.io/app/en/ether/pair-explorer/${pool.address}`, '_blank');
+                                            }}
+                                            className="token-link"
+                                        >
+                                            Voir sur DexTools
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="token-info">
+                                <div className="info-item">
+                                    <div className="info-label">Liquidité</div>
+                                    <div className={`info-value ${getLiquidityClass(liquidity)} liquidity-value`}
+                                        data-full-value={formatNumber(liquidity)}>
+                                        {formatLiquidityFriendly(liquidity)}
+                                    </div>
+                                </div>
+                                <div className="info-item">
+                                    <div className="info-label">Exchange</div>
+                                    <div className="info-value">{pool.exchangeName || 'N/A'}</div>
+                                </div>
+                                <div className="info-item">
+                                    <div className="info-label">Paire</div>
+                                    <div className="info-value">
+                                        {pool.mainToken?.symbol || 'Inconnu'} / {pool.sideToken?.symbol || 'Inconnu'}
+                                    </div>
+                                </div>
+                                <div className="info-item">
+                                    <div className="info-label">Date de création</div>
+                                    <div className="info-value">
+                                        {moment(pool.creationTime).format('DD/MM/YYYY HH:mm:ss')}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="token-info" style={{ marginTop: '15px' }}>
+                                <div className="info-item">
+                                    <div className="info-label">Adresse du Token</div>
+                                    <div className="info-value address">{pool.mainToken?.address || 'N/A'}</div>
+                                </div>
+                                <div className="info-item">
+                                    <div className="info-label">Adresse du Pool</div>
+                                    <div className="info-value address">{pool.address || 'N/A'}</div>
                                 </div>
                             </div>
                         </div>
-                        <div className="token-info">
-                            <div className="info-item">
-                                <div className="info-label">Liquidité</div>
-                                <div className={`info-value ${getLiquidityClass(liquidity)} liquidity-value`}
-                                    data-full-value={formatNumber(liquidity)}>
-                                    {formatLiquidityFriendly(liquidity)}
-                                </div>
-                            </div>
-                            <div className="info-item">
-                                <div className="info-label">Exchange</div>
-                                <div className="info-value">{pool.exchangeName || 'N/A'}</div>
-                            </div>
-                            <div className="info-item">
-                                <div className="info-label">Paire</div>
-                                <div className="info-value">
-                                    {pool.mainToken?.symbol || 'Inconnu'} / {pool.sideToken?.symbol || 'Inconnu'}
-                                </div>
-                            </div>
-                            <div className="info-item">
-                                <div className="info-label">Date de création</div>
-                                <div className="info-value">
-                                    {moment(pool.creationTime).format('DD/MM/YYYY HH:mm:ss')}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="token-info" style={{ marginTop: '15px' }}>
-                            <div className="info-item">
-                                <div className="info-label">Adresse du Token</div>
-                                <div className="info-value address">{pool.mainToken?.address || 'N/A'}</div>
-                            </div>
-                            <div className="info-item">
-                                <div className="info-label">Adresse du Pool</div>
-                                <div className="info-value address">{pool.address || 'N/A'}</div>
-                            </div>
-                        </div>
-                    </div>
+                    </Link>
                 );
 
                 setResults(prev => [...prev, tokenCard]);

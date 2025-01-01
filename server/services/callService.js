@@ -1,10 +1,6 @@
 const axios = require('axios');
+const { CORS_PROXY } = require('../config/constants');
 require('dotenv').config();
-
-const API_KEY = process.env.DEX_API_KEY;
-const BASE_URL = 'https://public-api.dextools.io/trial';
-const CORS_PROXY = 'http://192.168.100.214:8080/';
-const API_RATE_LIMIT = 1000;
 
 class callService {
     async makeApiCall(url) {
@@ -14,9 +10,9 @@ class callService {
         try {
             const response = await axios.get(proxyUrl, {
                 headers: {
-                    'X-API-KEY': API_KEY,
+                    'X-API-KEY': process.env.DEX_API_KEY,
                     'Accept': 'application/json',
-                    'Origin': 'http://localhost:3000'
+                    // 'Origin': 'http://localhost:3000'
                 }
             });
 

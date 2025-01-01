@@ -1,3 +1,8 @@
+.more-details {
+    text-decoration: none;
+    color: inherit;
+}
+
 button {
     background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 255, 136, 0.1));
     color: #00ff88;
