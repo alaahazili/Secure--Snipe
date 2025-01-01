@@ -2,12 +2,12 @@ const express = require('express');
 const cors_proxy = require('cors-anywhere');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// const tokenRoutes = require('./routes/tokenRoutes');
+const callRoutes = require('./routes/callRoutes');
 
 // Initialize the Express app
 const app = express();
 const port = 3000;
-const host = 'localhost';
+const host = '0.0.0.0';
 const proxyPort = 8080;
 
 // Middleware for CORS and body parsing
@@ -19,8 +19,8 @@ app.get('/api', (req, res) => {
     res.send('Main server is running!');
 });
 
-// Set up routes related to token data
-// app.use('/api/tokens', tokenRoutes);
+// Set up routes related to public api calls
+app.use('/api/call', callRoutes);
 
 // Set up CORS Proxy
 cors_proxy.createServer({
@@ -32,6 +32,6 @@ cors_proxy.createServer({
 });
 
 // Start the main server
-app.listen(port, () => {
+app.listen(port, host, () => {
     console.log(`Main server running at http://localhost:${port}`);
 });
