@@ -77,7 +77,29 @@ const TokenSearch = () => {
 
             if (Number(liquidity) <= 50) {
                 const tokenCard = (
-                    <Link to={`/project-detector/${pool.address}`} key={pool.address} className='more-details'>
+                    <Link
+                        to={`/project-detector/${pool.address}`}
+                        key={pool.address}
+                        className='more-details'
+                        state={{
+                            creationTime: pool.creationTime,
+                            mainToken: {
+                                name: pool.mainToken?.name || 'Inconnu',
+                                symbol: pool.mainToken?.symbol || 'Inconnu',
+                                address: pool.mainToken?.address || 'N/A',
+                            },
+                            sideToken: {
+                                symbol: pool.sideToken?.symbol || 'Inconnu',
+                            },
+                            holders: holders || 0,
+                            liquidity,
+                            formattedLiquidity: formatLiquidityFriendly(liquidity),
+                            exchangeName: pool.exchangeName || 'N/A',
+                            pair: `${pool.mainToken?.symbol || 'Inconnu'} / ${pool.sideToken?.symbol || 'Inconnu'}`,
+                            formattedCreationDate: moment(pool.creationTime).format('DD/MM/YYYY HH:mm:ss'),
+                            poolAddress: pool.address || 'N/A',
+                        }}
+                    >
                         <div className="token-card" key={pool.address}>
                             <div className="time-badge">{formatTimeAgo(pool.creationTime)}</div>
                             <div className="token-header">
@@ -101,8 +123,10 @@ const TokenSearch = () => {
                             <div className="token-info">
                                 <div className="info-item">
                                     <div className="info-label">Liquidité</div>
-                                    <div className={`info-value ${getLiquidityClass(liquidity)} liquidity-value`}
-                                        data-full-value={formatNumber(liquidity)}>
+                                    <div
+                                        className={`info-value ${getLiquidityClass(liquidity)} liquidity-value`}
+                                        data-full-value={formatNumber(liquidity)}
+                                    >
                                         {formatLiquidityFriendly(liquidity)}
                                     </div>
                                 </div>
@@ -136,6 +160,7 @@ const TokenSearch = () => {
                         </div>
                     </Link>
                 );
+                
 
                 setResults(prev => [...prev, tokenCard]);
             }

@@ -1,0 +1,9 @@
+.token-details-card {
+    margin-top: 1rem;
+}
+
+.token-details-card:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: none;
+}
