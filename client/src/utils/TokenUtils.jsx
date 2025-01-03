@@ -81,3 +81,21 @@ export function formatTimeAgo(date) {
         return `créé il y a ${Math.round(duration.asDays())} jours`;
     }
 }
+
+export function extractCreationDate(timestamp) {
+    // Convert the timestamp to milliseconds and create a Date object
+    const date = new Date(timestamp * 1000);
+
+    // Extract date components
+    const day = String(date.getDate()).padStart(2, '0'); // Ensure 2 digits
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const year = date.getFullYear();
+
+    // Extract time components
+    const hours = String(date.getHours()).padStart(2, '0'); // Ensure 2 digits
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+
+    // Format the date and time
+    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+}

@@ -3,6 +3,7 @@ const cors_proxy = require('cors-anywhere');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const callRoutes = require('./routes/callRoutes');
+const moreDetailsRoutes = require('./routes/moreDetailsRoutes');
 
 // Initialize the Express app
 const app = express();
@@ -21,6 +22,8 @@ app.get('/api', (req, res) => {
 
 // Set up routes related to public api calls
 app.use('/api/call', callRoutes);
+
+app.use('/api/moreDetails', moreDetailsRoutes);
 
 // Set up CORS Proxy
 cors_proxy.createServer({

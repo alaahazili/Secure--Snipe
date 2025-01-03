@@ -7,3 +7,52 @@
     box-shadow: none;
     border-color: none;
 }
+
+.additional-info-card:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: none;
+}
+
+.start-button-container {
+    display: flex;
+    justify-content: flex-end; /* Align button to the end horizontally */
+    align-items: flex-end; /* Align button to the end vertically */
+    width: 100%; /* Ensure the container takes full width */
+    height: 100%; /* Ensure the container takes the full height of its parent */
+    padding-top: 20px; /* Add padding if needed */
+}
+/* Hide increment and decrement arrows for number input */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield; /* For Firefox */
+    appearance: textfield; /* For other browsers */
+}
+
+/* Style the select and input elements */
+.info-value select,
+.info-value input {
+    width: 100%;
+    padding: 8px;
+    background-color: inherit;
+    border: none;
+    color: inherit;
+}
+
+/* Change the border color of the input when it's selected */
+.info-value select:focus,
+.info-value input:focus {
+    outline: none; /* Remove the default focus outline */
+    border-color: #00ff88; /* Change border color to #00ff88 when focused */
+}
+
+/* Optional: Hover effect */
+.info-value select:hover,
+.info-value input:hover {
+    border-color: #00ff88;
+}
